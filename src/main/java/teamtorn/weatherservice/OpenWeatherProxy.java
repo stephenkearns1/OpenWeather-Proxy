@@ -47,11 +47,10 @@ public class OpenWeatherProxy {
         statusCode = response.getStatus();
         
         if(statusCode != 200){
-            throw new WebApplicationException("Could not access the endpoint", statusCode);
+            throw new WebApplicationException("Could not access the endpoint ", statusCode);
         }else{
             /* Should use gson for forecast or return as json */
             forecast = response.getEntity(String.class);
-            //System.out.println(response.getEntity(String.class));
         }
         /*ClientResponse response = apiEndpoint.type("application/json")
                 .queryParam("q", city)
