@@ -8,9 +8,10 @@ import javax.ws.rs.WebApplicationException;
 
 
 /**
- *
- * @author Stephen Kearns
- */
+* @author  Stephen Kearns
+* @version 1.0
+* @since   4/11/2017
+*/
 public class OpenWeatherProxy {
 
     private final int port;
@@ -62,10 +63,5 @@ public class OpenWeatherProxy {
         }    
         
         return weather;
-    }
-    
-    public WeatherInfo getWeatherPOJO(){
-        Gson gson = new Gson();
-        return gson.fromJson(forecast, WeatherInfo.class);
     }
 }

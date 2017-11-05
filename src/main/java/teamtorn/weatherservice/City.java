@@ -1,16 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package teamtorn.weatherservice;
 
 import java.util.Map;
 
 /**
- *
- * @author Stephen Kearns
- */
+* @author  Stephen Kearns
+* @version 1.0
+* @since   4/11/2017
+*/
 public class City {
     public int id;
     public String name;

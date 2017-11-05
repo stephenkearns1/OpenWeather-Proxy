@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.Map;
 
 /**
- *
- * @author Stephen Kearns
- */
+* @author  Stephen Kearns
+* @version 1.0
+* @since   4/11/2017
+*/
 public class Forecast {
     int dt;
     Main mian;
