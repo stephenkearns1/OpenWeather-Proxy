@@ -1,10 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package teamtorn.weatherservice;
-
+import com.google.gson.Gson;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
@@ -51,14 +46,13 @@ public class OpenWeatherProxy {
         }else{
             /* Should use gson for forecast or return as json */
             forecast = response.getEntity(String.class);
-        }
-        /*ClientResponse response = apiEndpoint.type("application/json")
-                .queryParam("q", city)
-                .queryParam("mode", "json")
-                .queryParam("appid", appId)
-                .get(ClientResponse.class);
-        */
+        }    
         
         return forecast;
+    }
+    
+    public WeatherInfo getWeatherPOJO(){
+        Gson gson = new Gson();
+        return gson.fromJson(forecast, WeatherInfo.class);
     }
 }

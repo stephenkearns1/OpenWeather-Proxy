@@ -1,10 +1,10 @@
 /* Referances 
  * http://download.oracle.com/otn-pub/jcp/jaxrs-2_0-fr-eval-spec/jsr339-jaxrs-2.0-final-spec.pdf?AuthParam=1509812416_65e0aea901cf3cd43c290d50dfa0d3ec
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *
  */
 package teamtorn.weatherservice;
 
+import com.google.gson.Gson;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -25,13 +25,11 @@ public class WeatherService {
     @Produces("application/json")
     public Response getWeather(@PathParam("city") String city)
     {
+        Gson gson = new Gson();
         OpenWeatherProxy proxyApi = new OpenWeatherProxy();
-        //either serizlise json to PJO 
         String forecast = proxyApi.getForecast(city);
-        //or just return json 
-        
-        
-        return Response.status(200).entity(forecast).build();
+        WeatherInfo weather = proxyApi.getWeatherPOJO();
+        return Response.status(200).entity(gson.toJson(weather)).build();
     }    
     
 }
