@@ -18,6 +18,7 @@ public class OpenWeatherProxy {
     private String appId;
     private int statusCode;
     private String forecast;
+    private WeatherInfo weather;
    
     public OpenWeatherProxy(){
         port = 49000;
@@ -27,8 +28,19 @@ public class OpenWeatherProxy {
         
     }
     
-    public String getForecast(String city){
+  /**
+   * This method is used to obtain the forecast.
+   * For a specific city from the openweather API.
+   * @param city used to obtain forecast.
+   * @return WeatherInfo This is a POJO which has be serialized using Gson.
+   * @exception WebApplicationException On status codes other than 200.
+   * @see WebApplicationException
+   */
+    
+    public WeatherInfo getForecast(String city){
         openweatherURL = "http://api.openweathermap.org/data/2.5/forecast";
+        Gson gson = new Gson();
+        weather = new WeatherInfo();
         
         Client client = Client.create();
         WebResource apiEndpoint = client.resource(openweatherURL);
@@ -44,11 +56,12 @@ public class OpenWeatherProxy {
         if(statusCode != 200){
             throw new WebApplicationException("Could not access the endpoint ", statusCode);
         }else{
-            /* Should use gson for forecast or return as json */
             forecast = response.getEntity(String.class);
+              
+            weather = gson.fromJson(forecast, WeatherInfo.class);
         }    
         
-        return forecast;
+        return weather;
     }
     
     public WeatherInfo getWeatherPOJO(){

@@ -27,8 +27,7 @@ public class WeatherService {
     {
         Gson gson = new Gson();
         OpenWeatherProxy proxyApi = new OpenWeatherProxy();
-        String forecast = proxyApi.getForecast(city);
-        WeatherInfo weather = proxyApi.getWeatherPOJO();
+        WeatherInfo weather = proxyApi.getForecast(city);
         return Response.status(200).entity(gson.toJson(weather)).build();
     }    
     
