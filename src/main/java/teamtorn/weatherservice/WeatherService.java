@@ -9,14 +9,18 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriInfo;
 
 /**
- *
- * @author Stephen Kearns
- */
+* <h1>Weather Service Proxy</h1>
+* <p>
+* The service acts as a proxy between the openweather api and the jersey client.
+* It abstracts the openweather api implemenation away from the client.
+*
+* @author  Stephen Kearns
+* @version 1.0
+* @since   4/11/2017
+*/
 @Path("/weather")
 public class WeatherService {
     
