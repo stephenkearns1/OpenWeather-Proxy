@@ -17,7 +17,7 @@ import javax.ws.rs.core.Response;
 * The service acts as a proxy between the openweather api and the jersey client.
 * It abstracts the openweather api implemenation away from the client.
 *
-* @author  Stephen Kearns Barry Lougheed
+* @author  Stephen Kearns 
 * @version 1.0
 * @since   4/11/2017
 */
