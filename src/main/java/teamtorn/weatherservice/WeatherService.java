@@ -29,6 +29,7 @@ public class WeatherService {
     @Produces("application/json")
     public Response getWeather(@PathParam("city") String city)
     {
+        System.out.print(city);
         Gson gson = new Gson();
         OpenWeatherProxy proxyApi = new OpenWeatherProxy();
         WeatherInfo weather = proxyApi.getForecast(city);

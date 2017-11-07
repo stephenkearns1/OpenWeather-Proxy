@@ -39,6 +39,7 @@ public class OpenWeatherProxy {
    */
     
     public WeatherInfo getForecast(String city){
+        System.out.print(city);
         openweatherURL = "http://api.openweathermap.org/data/2.5/forecast";
         Gson gson = new Gson();
         weather = new WeatherInfo();
@@ -47,7 +48,7 @@ public class OpenWeatherProxy {
         WebResource apiEndpoint = client.resource(openweatherURL);
        
         ClientResponse response = apiEndpoint
-                .queryParam("city", city)
+                .queryParam("q", city)
                 .queryParam("mode", "json")
                 .queryParam("appid", appId)
                 .get(ClientResponse.class);
