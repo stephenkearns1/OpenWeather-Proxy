@@ -1,3 +1,10 @@
+<!-- 
+* @author Barry Lougheed
+* @version 1.0
+* @since   5/11/2017
+-->
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,6 +12,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
+        <!-- This creates a form to allow the user to enter their city on the browser
+             The port is set here and the "/city" in the root fie is where the web service pastes the user input
+        -->
         <form action = "http://localhost:49002/api/weather/city" method = "get">
             City:<br>
             <input type="text" name="city" value = "">

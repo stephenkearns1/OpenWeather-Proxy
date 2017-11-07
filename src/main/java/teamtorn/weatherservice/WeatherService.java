@@ -17,11 +17,16 @@ import javax.ws.rs.core.Response;
 * The service acts as a proxy between the openweather api and the jersey client.
 * It abstracts the openweather api implemenation away from the client.
 *
-* @author  Stephen Kearns
+* @author  Stephen Kearns Barry Lougheed
 * @version 1.0
 * @since   4/11/2017
 */
+
+
+//This class sets the root for the GET method. 
 @Path("/weather")
+
+
 public class WeatherService {
     
     @GET
@@ -29,9 +34,14 @@ public class WeatherService {
     @Produces("application/json")
     public Response getWeather(@PathParam("city") String city)
     {
+        
+        //This method parses Gson to JSON
+        // It opens the weather proxt, gets the forecast which is in gson and returns it as JSON
         Gson gson = new Gson();
         OpenWeatherProxy proxyApi = new OpenWeatherProxy();
         WeatherInfo weather = proxyApi.getForecast(city);
+        
+        //If the response is successful, it will return a 200 status
         return Response.status(200).entity(gson.toJson(weather)).build();
     }    
     
