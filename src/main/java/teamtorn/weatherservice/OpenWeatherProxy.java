@@ -31,9 +31,9 @@ public class OpenWeatherProxy {
     
   /**
    * This method is used to obtain the forecast.
-   * For a specific city from the openweather API.
+   * For a specific city from the openweather API
    * @param city used to obtain forecast.
-   * @return WeatherInfo This is a POJO which has be serialized using Gson.
+   * @return weather This is a POJO which has be serialized to json using Gson.
    * @exception WebApplicationException On status codes other than 200.
    * @see WebApplicationException
    */
@@ -47,7 +47,7 @@ public class OpenWeatherProxy {
         WebResource apiEndpoint = client.resource(openweatherURL);
        
         ClientResponse response = apiEndpoint
-                .queryParam("q", city)
+                .queryParam("city", city)
                 .queryParam("mode", "json")
                 .queryParam("appid", appId)
                 .get(ClientResponse.class);
